@@ -1,0 +1,68 @@
+import random
+print ("hola to bien")
+
+def generar_operaciones(numero, operacion):
+    operaciones = [1]
+    
+    # Suma
+    if operacion == "suma":
+        for _ in range(5):
+            num1 = random.randint(1, numero)
+            num2 = numero - num1
+            operaciones.append(f"{num1} + {num2} = {numero}")
+    
+    # Resta
+    elif operacion == "resta":
+        for _ in range(5):
+            num1 = random.randint(numero, numero + 10)
+            num2 = num1 - numero
+            operaciones.append(f"{num1} - {num2} = {numero}")
+    
+    # Multiplicación
+    elif operacion == "multiplicacion":
+        for _ in range(5):
+            num1 = random.randint(1, numero)
+            if numero % num1 == 0:
+                num2 = numero // num1
+                operaciones.append(f"{num1} * {num2} = {numero}")
+    
+    # División
+    elif operacion == "division":
+        for _ in range(5):
+            num1 = random.randint(1, 10)
+            num2 = numero * num1
+            operaciones.append(f"{num2} / {num1} = {numero}")
+    
+    return operaciones
+
+def menu():
+    print("Bienvenido al generador de operaciones!")
+    numero = int(input("Introduce un número: "))
+    print("Elige una operación:")
+    print("1. Suma")
+    print("2. Resta")
+    print("3. Multiplicación")
+    print("4. División")
+    
+    opcion = int(input("Selecciona el número de la operación: "))
+    
+    if opcion == 1:
+        operacion = "suma"
+    elif opcion == 2:
+        operacion = "resta"
+    elif opcion == 3:
+        operacion = "multiplicacion"
+    elif opcion == 4:
+        operacion = "division"
+    else:
+        print("Opción no válida")
+        return
+    
+    # Genera y muestra operaciones
+    operaciones = generar_operaciones(numero, operacion)
+    print("\nAquí tienes algunas operaciones que dan como resultado", numero)
+    for op in operaciones:
+        print(op)
+
+if __name__ == "__main__":
+    menu()
